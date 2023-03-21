@@ -7,10 +7,19 @@ import {
   MinLength,
 } from 'class-validator';
 
-export class CreateUserDto extends User {
+export class CreateUserDto {
+  /**
+   * O e-mail é necessário apra o login.
+   * @example email@email.com
+   */
   @IsEmail()
   email: string;
 
+  /**
+   * É possível conectar com uma senha.
+   * é necessário informar uma senha.
+   * @example Xpto@123
+   */
   @IsString()
   @MinLength(4)
   @MaxLength(20)
@@ -20,6 +29,11 @@ export class CreateUserDto extends User {
   })
   password: string;
 
+  /**
+   * O nome será utilizado para qualquer coisa (Perfil, Home Page, etc) que precise exibir
+   * informações da pessoa conectada.
+   * @example Lucas Diniz
+   */
   @IsString()
   name: string;
 }
